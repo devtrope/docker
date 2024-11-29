@@ -11,4 +11,7 @@ RUN echo "ServerName docker.test" >> /etc/apache2/conf-available/servername.conf
 
 COPY . /var/www/html
 
+#Composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
 EXPOSE 80
