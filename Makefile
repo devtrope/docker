@@ -13,6 +13,9 @@ build:
 check-container:
 	@docker ps --filter "name=$(container)" --filter "status=running" | grep $(container) > /dev/null || (echo "Le conteneur $(container) n'est pas lancé. Lancer la commande 'make start'."; exit 1)
 
+commit:
+	git add . && git commit -m '$(message)' && git push
+
 install: check-container
 	$(exec) composer install
 
